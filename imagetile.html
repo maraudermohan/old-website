@@ -1,0 +1,41 @@
+<style>
+#sub-page .loading{
+	width : 100%;
+	position: absolute;
+    top: 40%;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+</style>
+<script>
+	function rotateCog(degs) {
+		var degValue = 'rotate(' + degs + 'deg)';
+		$(".loading .icon.rotate1").css({'-webkit-transform': degValue,
+			'-moz-transform': degValue,
+			'transform': degValue});
+		$(".loading .icon.rotate2").css({'-webkit-transform': degValue,
+			'-moz-transform': degValue,
+			'transform': degValue});
+		$(".loading .icon").toggleClass("rotate1").toggleClass("rotate2");
+		if($(".loading").css("display") == 'block') {
+			setTimeout(rotateCog,900, degs+180);
+		}
+	}
+	$("#sub-page .image-tile-game").attr('src','https://image-tile-game.herokuapp.com');
+	$("#sub-page .image-tile-game").on("load",function() {
+		$(".loading").slideUp("200");
+		$(".image-tile-game").slideDown("300");
+	});
+	rotateCog(360);
+
+</script>
+<div class="loading flex-container">
+	<h1 class="flex-item icon icon-cog rotate1"></h1>
+	<h4 class="flex-item">Loading from Heroku Site.</h4>
+	<h3 class="flex-item">Please wait...</h3>
+</div>
+<iframe class='image-tile-game'></iframe>

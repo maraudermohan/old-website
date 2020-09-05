@@ -1,0 +1,6 @@
+
+#Weebly Additions Start
+DirectoryIndex index.html index.php
+ErrorDocument 404 /404.php
+ErrorDocument 403 /404.php
+#Weebly Additions End
